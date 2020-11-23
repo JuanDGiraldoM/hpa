@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">E:\SW\Jmeter\apache-jmeter-3.0\apache-jmeter-3.0\lib\jt400.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="INTEGRA RIA" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(HILOS, 1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SUBIDA, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(DURACION, 1)}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="LEER ANTES DE EJECUTAR PRUEBA" enabled="false">
+          <stringProp name="dataSource"></stringProp>
+          <stringProp name="query">SE DEBE RECORDAR QUE SE DEBEN CONFIGURAR LOS MONITORES CON SU RESPECTIVA CARGA DE REGISTROS A ENVIAR, 
+EL SIGUIENTE SCRIPT SOLO REALIZA EL ENVÍO DE LA CARGA ANTERIORMENTE CONFIGURADA.</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">1</stringProp>
+          <stringProp name="queryType">Callable Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="TestPlan.comments">SE DEBE RECORDAR QUE SE DEBEN CONFIGURAR LOS MONITORES CON SU RESPECTIVA CARGA DE REGISTROS A ENVIAR, EL SIGUIENTE SCRIPT SOLO REALIZA EL ENVÍO DE LA CARGA ANTERIORMENTE CONFIGURADA.
+</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Configuración del CSV Data Set" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${__P(DT_Replica_Calidad , DT_Replica_Integra.csv)}</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">V_STR_Usuario,V_STR_Contrasena,V_STR_IP,V_STR_Puerto </stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="Configuración de la Conexión AS400" enabled="true">
+          <boolProp name="autocommit">false</boolProp>
+          <stringProp name="checkQuery">SELECT current date FROM sysibm.sysdummy1</stringProp>
+          <stringProp name="connectionAge">1000</stringProp>
+          <stringProp name="dataSource">prueba1</stringProp>
+          <stringProp name="dbUrl">jdbc:as400://10.9.2.231:992/INTEGRA</stringProp>
+          <stringProp name="driver">com.ibm.as400.access.AS400JDBCDriver</stringProp>
+          <boolProp name="keepAlive">true</boolProp>
+          <stringProp name="password">JUNIO2020</stringProp>
+          <stringProp name="poolMax">10</stringProp>
+          <stringProp name="timeout">10000</stringProp>
+          <stringProp name="transactionIsolation">DEFAULT</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
+          <stringProp name="username">GLCDELGAD</stringProp>
+          <stringProp name="TestPlan.comments">Clase del driver:
+******************
+com.IBM.db2os390.sqlj.JDBC.DB2SQLJDriver
+com.ibm.db2.jcc.DB2Driver
+com.ibm.db2.jdbc.app.DB2Driver
+com.ibm.as400.access.AS400JDBCDriver
+
+URL BD
+******************************
+jdbc:db2://10.9.2.231:992/Integra
+jdbc:db2://10.9.2.231/Integra
+</stringProp>
+        </JDBCDataSource>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="ADD LIBRERIAS" enabled="true">
+          <stringProp name="dataSource">prueba1</stringProp>
+          <stringProp name="query">--CALL QSYS.QCMDEXC(&apos;CHGLIBL LIBL(CTRLIBRP CTRLIBRA)&apos;,31)
+--CALL QCMDEXC(&apos;CHGLIBL LIBL(CTRLIBRP)&apos;,22)
+CALL QCMDEXC(&apos;CHGLIBL LIBL(CTRLIBRP CTRLIBRA QMQM VISIONR)&apos;,44)
+</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">1</stringProp>
+          <stringProp name="queryType">Callable Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="TestPlan.comments">Se añade las librerías CTRLIBRP, CTRLIBRA, 
+</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="CALL TR Cliente" enabled="false">
+          <stringProp name="dataSource">prueba1</stringProp>
+          <stringProp name="query">CALL CTRLIBRP.CTRRMQAUTC</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">1</stringProp>
+          <stringProp name="queryType">Callable Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="TestPlan.comments">Se hace call 
+**** funcionalidad que deja de funcionar, pues la información de clientes ahora viaja en los mensajes de saldos y movimentos ****</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="CALL TR Movimiento" enabled="true">
+          <stringProp name="dataSource">prueba1</stringProp>
+          <stringProp name="query">CALL CTRLIBRP.CTRRMQAUTO</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">1</stringProp>
+          <stringProp name="queryType">Callable Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="TestPlan.comments">Se hace call a los movimientos, que a su vez también envía saldos 
+</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="CALL TR Histórico" enabled="false">
+          <stringProp name="dataSource">prueba1</stringProp>
+          <stringProp name="query">CALL CTRLIBRP.CTRRMQAUTB</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout">1</stringProp>
+          <stringProp name="queryType">Callable Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="TestPlan.comments">Se hace call 
+OJO: Por problemas de permisos en integra no se lanza, se debe lanzar por menú</stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Acción de Prueba" enabled="true">
+          <stringProp name="TestPlan.comments">Se pone a esperar lo que demoraría la prueba (2400000 corresponde a 40 minutos)</stringProp>
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">2400000</stringProp>
+        </TestAction>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">D:\TESTWARE\NU0027001_RIA_Replica_ISeries_PE\Jmeter\Back\Prueba_EstresConlog_20072020_1513</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <AccessLogSampler guiclass="TestBeanGUI" testclass="AccessLogSampler" testname="Muestreador de Acceso a Log" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="domain">10.2.9</stringProp>
+          <boolProp name="imageParsing">false</boolProp>
+          <stringProp name="logFile"></stringProp>
+          <stringProp name="parserClassName">org.apache.jmeter.protocol.http.util.accesslog.TCLogParser</stringProp>
+          <stringProp name="portString"></stringProp>
+        </AccessLogSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

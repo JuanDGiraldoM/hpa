@@ -1,0 +1,1599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Plan de Pruebas" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">E:\SW\Jmeter\apache-jmeter-3.0\apache-jmeter-3.0\lib\jt400.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Informe Agregado" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Consulta por Fecha" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(HILOS_FEC, 1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SUBIDA_FEC, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(DURACION_FEC, 1800)}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTEConfigGui" testclass="ConfigTestElement" testname="Conexión Calidad" enabled="true">
+          <stringProp name="RTEConnectionConfig.server">10.9.2.221</stringProp>
+          <stringProp name="RTEConnectionConfig.port">992</stringProp>
+          <stringProp name="RTEConnectionConfig.protocol">TN5250</stringProp>
+          <stringProp name="RTEConnectionConfig.sslType">TLS</stringProp>
+          <stringProp name="RTEConnectionConfig.terminalType">IBM-3179-2</stringProp>
+          <stringProp name="RTEConnectionConfig.connectTimeout">60000</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Conectar Calidad iSeries" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">CONNECT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Login " enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">6</stringProp>
+                <stringProp name="CoordInputRowGUI.column">53</stringProp>
+                <stringProp name="CoordInputRowGUI.input">CLCDELGAD</stringProp>
+                <stringProp name="Input.input">CLCDELGAD</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">7</stringProp>
+                <stringProp name="CoordInputRowGUI.column">53</stringProp>
+                <stringProp name="Input.input">MAYO2020</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu Principal" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="80862004">UMENU</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu CTR" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">10</stringProp>
+                <stringProp name="CoordInputRowGUI.column">10</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">1</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="753105405">CONTROLES BASICOS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu 007" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <intProp name="CoordInputRowGUI.row">18</intProp>
+                <intProp name="CoordInputRowGUI.column">8</intProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-461834052">COMPONENTES TRANSVERSALES</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="MANT. PARAMETROS GENERALES DBE " enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <intProp name="CoordInputRowGUI.row">11</intProp>
+                <intProp name="CoordInputRowGUI.column">9</intProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1001926312">EJESML
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Mirar valor del parámetro" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">16</stringProp>
+                <stringProp name="CoordInputRowGUI.column">3</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">6</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1524603222">EJESIMSLD
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Modificar Valor Saldo" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">14</stringProp>
+                <stringProp name="CoordInputRowGUI.column">2</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">2</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-546347495">JESIMSLD 
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Introducir Valor Saldo" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">11</stringProp>
+                <stringProp name="CoordInputRowGUI.column">27</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">10</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-546347495">JESIMSLD 
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Mirar valor del parámetro" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">16</stringProp>
+                <stringProp name="CoordInputRowGUI.column">3</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">6</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1697632051">PARAMETRO PARA EJECUTAR SIMULADORES EN Q SAL Y MOV
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Modificar Valor Saldo" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">15</stringProp>
+                <stringProp name="CoordInputRowGUI.column">2</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">2</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1697632051">PARAMETRO PARA EJECUTAR SIMULADORES EN Q SAL Y MOV
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Introducir Valor Saldo" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <stringProp name="CoordInputRowGUI.row">11</stringProp>
+                <stringProp name="CoordInputRowGUI.column">27</stringProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+                <stringProp name="Input.input">10</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1697632051">PARAMETRO PARA EJECUTAR SIMULADORES EN Q SAL Y MOV
+</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="false">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">6000</stringProp>
+        </LoopController>
+        <hashTree>
+          <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="true">
+            <stringProp name="filename">${__P(DT_CONSULTA_FEC, Dt_ConsultaFechas.csv)}</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="delimiter">;</stringProp>
+            <stringProp name="variableNames">V_STR_Rol,V_STR_TipoID,V_STR_NumeroID,V_Date_FechaInicial,V_Date_FechaFin</stringProp>
+            <boolProp name="randomOrder">true</boolProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="rewindOnTheEndOfList">true</boolProp>
+            <boolProp name="independentListPerThread">false</boolProp>
+          </com.blazemeter.jmeter.RandomCSVDataSetConfig>
+          <hashTree/>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Consulta por Rango de fechas _ Busqueda" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs">
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">9</intProp>
+                  <intProp name="CoordInputRowGUI.column">28</intProp>
+                  <stringProp name="CoordInputRowGUI.input">${V_STR_Rol}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">10</intProp>
+                  <intProp name="CoordInputRowGUI.column">28</intProp>
+                  <stringProp name="CoordInputRowGUI.input">${V_STR_TipoID}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">11</intProp>
+                  <intProp name="CoordInputRowGUI.column">28</intProp>
+                  <stringProp name="CoordInputRowGUI.input">${V_STR_NumeroID}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">13</intProp>
+                  <intProp name="CoordInputRowGUI.column">28</intProp>
+                  <stringProp name="CoordInputRowGUI.input">${V_Date_FechaInicial}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">14</intProp>
+                  <intProp name="CoordInputRowGUI.column">28</intProp>
+                  <stringProp name="CoordInputRowGUI.input">${V_Date_FechaFin}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-727406907">Op. Referencia</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+              <stringProp name="Assertion.scope">all</stringProp>
+              <stringProp name="Scope.variable">Respuesta</stringProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Aserción de Duración" enabled="true">
+              <stringProp name="DurationAssertion.duration">5000</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="false">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">Referencia</stringProp>
+              <stringProp name="RegexExtractor.regex">Op. Referencia</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">Not Found</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs"/>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">F12</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree/>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs"/>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F3" enabled="false">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F3</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F3" enabled="false">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F3</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Consulta por Referencia" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(HILOS_REF, 1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(SUBIDA_REF, 1)}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">${__P(DURACION_REF, 1800)}</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConfigTestElement guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTEConfigGui" testclass="ConfigTestElement" testname="Conexión Calidad" enabled="true">
+          <stringProp name="RTEConnectionConfig.server">10.9.2.221</stringProp>
+          <stringProp name="RTEConnectionConfig.port">992</stringProp>
+          <stringProp name="RTEConnectionConfig.protocol">TN5250</stringProp>
+          <stringProp name="RTEConnectionConfig.sslType">TLS</stringProp>
+          <stringProp name="RTEConnectionConfig.terminalType">IBM-3179-2</stringProp>
+          <stringProp name="RTEConnectionConfig.connectTimeout">60000</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Conectar Calidad iSeries" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">CONNECT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Login " enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu Principal" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="80862004">UMENU</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu Giros" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <intProp name="CoordInputRowGUI.row">9</intProp>
+                <intProp name="CoordInputRowGUI.column">10</intProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="228954687">MANTENIMIENTOS BASICOS</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu 007" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <intProp name="CoordInputRowGUI.row">18</intProp>
+                <intProp name="CoordInputRowGUI.column">8</intProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1019588574">Mantenimiento Consulta Anular Giros TP</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Menu 1003 Mantenimiento consulta Anular Giros TP" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <intProp name="CoordInputRowGUI.row">11</intProp>
+                <intProp name="CoordInputRowGUI.column">9</intProp>
+                <stringProp name="CoordInputRowGUI.input">1</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="118066980">Consulta por rango de fechas</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Consulta por Referencia" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs">
+              <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                <intProp name="CoordInputRowGUI.row">13</intProp>
+                <intProp name="CoordInputRowGUI.column">27</intProp>
+                <stringProp name="CoordInputRowGUI.input">2</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="790231178">CONSULTA POR REFERENCIA</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">6000</stringProp>
+        </LoopController>
+        <hashTree>
+          <com.blazemeter.jmeter.RandomCSVDataSetConfig guiclass="com.blazemeter.jmeter.RandomCSVDataSetConfigGui" testclass="com.blazemeter.jmeter.RandomCSVDataSetConfig" testname="bzm - Random CSV Data Set Config" enabled="true">
+            <stringProp name="filename">Dt_ConsultaReferencias.csv</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="delimiter"></stringProp>
+            <stringProp name="variableNames">V_STR_Referencia</stringProp>
+            <boolProp name="randomOrder">true</boolProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="rewindOnTheEndOfList">false</boolProp>
+            <boolProp name="independentListPerThread">false</boolProp>
+          </com.blazemeter.jmeter.RandomCSVDataSetConfig>
+          <hashTree/>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Consulta por Referencia _Busqueda" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs">
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">12</intProp>
+                  <intProp name="CoordInputRowGUI.column">36</intProp>
+                  <stringProp name="CoordInputRowGUI.input">${V_STR_Referencia}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Aserción de Duración" enabled="true">
+              <stringProp name="DurationAssertion.duration">5000</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-975571781">Valor Giro</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F7" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs"/>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">F7</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-1051635582">Está seguro</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Anulación" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs">
+                <elementProp name="" elementType="com.blazemeter.jmeter.rte.sampler.CoordInputRowGUI">
+                  <intProp name="CoordInputRowGUI.row">13</intProp>
+                  <intProp name="CoordInputRowGUI.column">40</intProp>
+                  <stringProp name="CoordInputRowGUI.input">S</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree>
+            <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Aserción de Duración" enabled="true">
+              <stringProp name="DurationAssertion.duration">5000</stringProp>
+            </DurationAssertion>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Aserción de Respuesta" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="60401249">Giro anulado Exitosamente</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="Enter" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs"/>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">ENTER</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree/>
+          <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+            <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+              <collectionProp name="Inputs.inputs"/>
+            </elementProp>
+            <stringProp name="RTESampler.attentionKey">F12</stringProp>
+            <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+            <boolProp name="RTESampler.waitSync">true</boolProp>
+            <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitCursor">false</boolProp>
+            <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+            <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+            <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+            <boolProp name="RTESampler.waitSilent">false</boolProp>
+            <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+            <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+            <boolProp name="RTESampler.waitText">false</boolProp>
+            <stringProp name="RTESampler.waitTextRegex"></stringProp>
+            <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+            <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+            <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+            <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+          </com.blazemeter.jmeter.rte.sampler.RTESampler>
+          <hashTree/>
+        </hashTree>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F3" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F3</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F12" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F12</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+        <com.blazemeter.jmeter.rte.sampler.RTESampler guiclass="com.blazemeter.jmeter.rte.sampler.gui.RTESamplerGui" testclass="com.blazemeter.jmeter.rte.sampler.RTESampler" testname="F3" enabled="true">
+          <elementProp name="Inputs.inputs" elementType="com.blazemeter.jmeter.rte.sampler.Inputs">
+            <collectionProp name="Inputs.inputs"/>
+          </elementProp>
+          <stringProp name="RTESampler.attentionKey">F3</stringProp>
+          <stringProp name="RTESampler.action">SEND_INPUT</stringProp>
+          <boolProp name="RTESampler.waitSync">true</boolProp>
+          <stringProp name="RTESampler.waitSyncTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitCursor">false</boolProp>
+          <stringProp name="RTESampler.waitCursorRow">1</stringProp>
+          <stringProp name="RTESampler.waitCursorColumn">1</stringProp>
+          <stringProp name="RTESampler.waitCursorTimeout">30000</stringProp>
+          <boolProp name="RTESampler.waitSilent">false</boolProp>
+          <stringProp name="RTESampler.waitSilentTime">1000</stringProp>
+          <stringProp name="RTESampler.waitSilentTimeout">60000</stringProp>
+          <boolProp name="RTESampler.waitText">false</boolProp>
+          <stringProp name="RTESampler.waitTextRegex"></stringProp>
+          <stringProp name="RTESampler.waitTextTimeout">30000</stringProp>
+          <stringProp name="RTESampler.waitTextAreaTop">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaLeft">1</stringProp>
+          <stringProp name="RTESampler.waitTextAreaBottom"></stringProp>
+          <stringProp name="RTESampler.waitTextAreaRight"></stringProp>
+        </com.blazemeter.jmeter.rte.sampler.RTESampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
